@@ -1,0 +1,133 @@
+.garages-container {
+  overflow-x:scroll;
+  min-width:100vw;
+  height:100%;
+  padding:8vh 2vw 1vh;
+
+  scroll-behavior:smooth;
+  // 横スクロールプラグイン対応
+  scroll-snap-type:y mandatory;
+  scroll-snap-type:mandatory;
+  scroll-snap-points-y:repeat(100vw);
+  scroll-snap-type:x mandatory;
+  @media only screen and (max-height: 780px) {
+  }
+}
+
+.garages {
+  display:flex;
+  width:auto;
+  padding:1vh 2vw;
+
+  $c4:var(--color4);
+
+  .garage {
+    margin:0 12px;
+    padding:8px 8px 16px;
+
+    border:1px solid rgba(#fff, .2);
+    border-radius:8px;
+    background-color:rgba(#fff, .05);
+
+    backdrop-filter:blur(2px);
+    scroll-snap-align:start;
+  }
+
+  .garage-strokes {
+    display:grid;
+    overflow:auto;
+    grid-template-columns:repeat(2, auto);
+    margin:0 1vw;
+
+    border-radius:8px;
+  }
+
+  //===== Input Text
+  .garage-strokes .garage-stroke-box {
+    width:calc(100vw / 2 - 8vw);
+    margin:4px;
+    padding:1vh 1vw;
+
+    border:1px solid rgba(#fff, .4);
+    border-radius:6px;
+    background:#0004;
+  }
+
+  .garage-strokes {
+    // Delete Button
+    .clear-area {
+      margin:8px 0;
+
+      @include flex(end, center);
+    }
+    input[type="button"] {
+      color:currentcolor;
+      border-color:currentcolor;
+      background:#0005;
+    }
+    .garage-stroke-box:nth-child(1) {
+      h3, textarea, input[type="button"] {
+        color:$c4;
+        // border-color: $c4;
+      }
+    }
+    .garage-stroke-box:nth-child(2) {
+      h3, textarea, input[type="button"] {
+        color:var(--color2);
+        border-color:var(--color2);
+      }
+    }
+    .garage-stroke-box:nth-child(3) {
+      h3, textarea, input[type="button"] {
+        color:var(--color3);
+        border-color:var(--color3);
+      }
+    }
+    .garage-stroke-box:nth-child(4) {
+      h3, textarea, input[type="button"] {
+        color:var(--color1);
+        border-color:var(--color1);
+      }
+    }
+  }
+
+  //===== input area
+  textarea {
+    overflow:auto;
+    width:100%;
+    height:15vh;
+    min-height:8em;
+    margin:auto;
+    padding:.5ch 1ch;
+
+    resize:none;
+    transition:.15s;
+
+    border:2px solid currentcolor !important;
+    border-radius:8px;
+    background-color:rgba(#000, .4);
+
+    font-family:YakuHanRP, "M PLUS Rounded 1c", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+    font-size:.8em;
+    font-size:1em;
+
+    @include flex(center);
+    &:hover {
+      border-color:white !important;
+      // box-shadow: 0 0 2px #ccc;
+      background-color:rgba(#000, .2);
+    }
+    &:focus, &:focus-visible {
+      border:2px solid currentcolor !important;
+      background-color:rgba(#000, .5);
+      // box-shadow: 0 0 4px #ccc;
+    }
+  }
+}
+// ===== Media
+// @media only screen and (max-width: 640px) {
+//  .garage-strokes .garage-stroke-box {
+// TODO: Mobile
+//  }
+// }
